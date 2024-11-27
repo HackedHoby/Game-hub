@@ -133,7 +133,9 @@
         }
 
         function drawMiniMap() {
-            const scale = miniMapSize /20;
+            const scale = miniMapSize / 20;  // Weniger zoomt die MiniMap heraus
+            const offsetX = snake[0].x;      // MiniMap zentriert auf Schlangenkopf
+            const offsetY = snake[0].y;
 
             miniCtx.clearRect(0, 0, miniMapCanvas.width, miniMapCanvas.height);
             miniCtx.fillStyle = '#222';
@@ -142,14 +144,14 @@
             miniCtx.fill();
 
             miniCtx.fillStyle = 'red';
-            miniCtx.fillRect(food.x * scale + miniMapSize / 2, food.y * scale + miniMapSize / 2, boxSize * scale, boxSize * scale);
+            miniCtx.fillRect(food.x * scale + miniMapSize / 2 - offsetX * scale, food.y * scale + miniMapSize / 2 - offsetY * scale, boxSize * scale, boxSize * scale);
 
             miniCtx.fillStyle = 'blue';
-            miniCtx.fillRect(powerUp.x * scale + miniMapSize / 2, powerUp.y * scale + miniMapSize / 2, boxSize * scale, boxSize * scale);
+            miniCtx.fillRect(powerUp.x * scale + miniMapSize / 2 - offsetX * scale, powerUp.y * scale + miniMapSize / 2 - offsetY * scale, boxSize * scale, boxSize * scale);
 
             miniCtx.fillStyle = 'lime';
             snake.forEach(segment => {
-                miniCtx.fillRect(segment.x * scale + miniMapSize / 2, segment.y * scale + miniMapSize / 2, boxSize * scale, boxSize * scale);
+                miniCtx.fillRect(segment.x * scale + miniMapSize / 2 - offsetX * scale, segment.y * scale + miniMapSize / 2 - offsetY * scale, boxSize * scale, boxSize * scale);
             });
         }
 
