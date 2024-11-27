@@ -29,8 +29,8 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 150px;
-            height: 150px;
+            width: 200px; /* MiniMap auf 200x200 Pixel vergrößert */
+            height: 200px;
             border: 2px solid #ddd;
             background-color: #333;
             border-radius: 50%;
@@ -64,7 +64,7 @@
         Score: <span id="score">0</span> | Highscore: <span id="highscore">0</span>
     </div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <canvas id="miniMap" width="150" height="150"></canvas>
+    <canvas id="miniMap" width="200" height="200"></canvas> <!-- MiniMap Größe angepasst -->
 
     <script>
         const canvas = document.getElementById('gameCanvas');
@@ -77,7 +77,7 @@
 
         const boxSize = 20;
         const viewSize = 400;
-        const miniMapSize = 150;
+        const miniMapSize = 200; // MiniMap Größe angepasst
         const speed = 200;
 
         let snake = [{ x: 0, y: 0 }];
@@ -133,7 +133,8 @@
         }
 
         function drawMiniMap() {
-            const scale = miniMapSize / 20;  // Weniger zoomt die MiniMap heraus
+            const scale = miniMapSize / 40; // Anpassung des Zoomfaktors (nun für größere MiniMap)
+
             const offsetX = snake[0].x;      // MiniMap zentriert auf Schlangenkopf
             const offsetY = snake[0].y;
 
